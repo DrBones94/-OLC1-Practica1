@@ -24,8 +24,8 @@ public class Token {
       asterisco, // Asterisco *
       mas, // Mas +
       separador, // Separador ~
-      coma //Coma ,
-      
+      coma, //Coma ,
+      cadena , // Cadena entre comillas dobles
     }
   
   
