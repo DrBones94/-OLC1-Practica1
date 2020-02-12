@@ -64,7 +64,14 @@ public class AnalisisL {
                             LTokens.add(s);
                             estado = 0;
                             lexema = "";
+                        }else if(caracter == 123){ //Corchete Abierto {
+                            lexema += car;
+                            Token s = new Token(lexema, Type.corcheteA, "Corchete Abierto", i,j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
                         }
+                    }
                     break;
                 }
             }
