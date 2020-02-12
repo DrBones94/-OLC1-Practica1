@@ -10,7 +10,7 @@ package practica1;
  * @author drbones
  */
 public class Token {
-    enum Type{
+    public enum Type{
       corcheteA, //Corchete abierto {
       corcheteC, //Corchete cerrado }
       id, //Identificador
