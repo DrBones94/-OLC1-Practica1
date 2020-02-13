@@ -66,12 +66,74 @@ public class AnalisisL {
                             lexema = "";
                         }else if(caracter == 123){ //Corchete Abierto {
                             lexema += car;
-                            Token s = new Token(lexema, Type.corcheteA, "Corchete Abierto", i,j);
+                            Token s = new Token(lexema, Type.corcheteA, "Corchete Abierto", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 125){ //Corchete Cerrado }
+                            lexema += car;
+                            Token s = new Token(lexema, Type.corcheteC, "Corchete Cerrado", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 43){ //Signo +
+                            lexema += car;
+                            Token s = new Token(lexema, Type.mas, "Signo +", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 42){ //Signo *
+                            lexema += car;
+                            Token s = new Token(lexema, Type.asterisco, "Signo *", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 63){ //Signo ?
+                            lexema += car;
+                            Token s = new Token(lexema, Type.interrogacionC, "Signo ?", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 46){ //Punto .
+                            lexema += car;
+                            Token s = new Token(lexema, Type.punto, "Punto", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 45){ //Signo -
+                            estado = 3;
+                            lexema += car;
+                        }else if(caracter == 166){ //Pipe |
+                            lexema += car;
+                            Token s = new Token(lexema, Type.or, "Or", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 129){ //Separador ~
+                            lexema += car;
+                            Token s = new Token(lexema, Type.separador, "Separador ~", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 58){ //Dos Puntos :
+                            lexema += car;
+                            Token s = new Token(lexema, Type.dosP, "Dos Puntos", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 59){ //Punto y Coma ;
+                            lexema += car;
+                            Token s = new Token(lexema, Type.puntoC, "Punto y Coma", i, j);
+                            LTokens.add(s);
+                            estado = 0;
+                            lexema = "";
+                        }else if(caracter == 37){ //Porcentaje %
+                            lexema += car;
+                            Token s = new Token(lexema, Type.porcentaje, "Porcentaje", i, j);
                             LTokens.add(s);
                             estado = 0;
                             lexema = "";
                         }
-                    }
                     break;
                 }
             }
