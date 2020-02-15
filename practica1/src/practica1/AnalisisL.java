@@ -28,6 +28,7 @@ public class AnalisisL {
         String linea = new String();
         int caracter = 0; //ASCII del caracter.
         int estado = 0;
+        boolean isChar = true; //Para saber si es caracter
         char car;
         String lexema= "";
         
@@ -40,11 +41,7 @@ public class AnalisisL {
                 
                 switch(estado){
                     case 0:
-                        if(caracter == 32){ //Espacio en blanco
-                            estado = 0;
-                        }else if(caracter == 9){ //Tabulación
-                            estado = 0;
-                        }else if(caracter == 10){ //Salto de línea
+                        if(caracter == 32 || caracter == 9 || caracter == 10){ //Espacio en blanco
                             estado = 0;
                         }else if(caracter == 209 || caracter == 241){ //Letra ñ y Ñ
                             estado = 1;
@@ -133,7 +130,85 @@ public class AnalisisL {
                             LTokens.add(s);
                             estado = 0;
                             lexema = "";
+                        }else if(caracter > 32 || caracter <= 125){
+                          lexema += car;
+                          Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
+                          LTokens.add(s);
+                          estado = 0;
+                          lexema = "";
+                        }else{
+                          lexema += car;
+                          ErrorA e = new ErrorA(lexema, "Error Léxico", "Carácter Desconocido", i, j);
+                          LErrores.add(e);
+                          lexema = "";
+                          estado = 0;
                         }
+                    break;
+                    //ID
+                    case 1:
+                      if(65 <= caracter && caracter <= 90){ //Letras Mayusculas
+                        estado = 1;
+                        isChar = false;
+                        lexema += car;
+                      }else if(caracter == 241 || caracter == 209){ // ñ y Ñ
+                        estado = 1;
+                        isChar = false;
+                        lexema += car;
+                      }else if(97 <= caracter && caracter <= 122){ //Letras minusculas
+                        estado = 1;
+                        isChar = false;
+                        lexema += car;
+                      }else if(48 <= caracter && caracter <= 57){ //Números
+                        estado = 1;
+                        isChar = false;
+                        lexema += car;
+                      }else if(caracter == 95){ //Guion Bajo _
+                        estado = 1;
+                        isChar = false;
+                        lexema += car;
+                      }else{
+                        if(lexema.equalsIgnoreCase("CONJ")){
+                          Token t = new Token(lexema, Type.prConj, "Palabra Reservada", i, j);
+                          LTokens.add(t);
+                          lexema = "";
+                          estado = 0;
+                          isChar = true;
+                          j = j - 1;
+                        }else{
+                          Token t = new Token(lexema, Type.id, "Identificador", i, j);
+                          LTokens.add(t);
+                          lexema = "";
+                          estado = 0;
+                          isChar = true;
+                          j = j - 1;
+                        }
+                      }
+                    break;
+                    
+                    //Numero
+                    case 2:
+                       if(48 <= caracter && caracter <= 57){ // Números
+                         estado = 2;
+                         lexema += car;
+                       }else{
+                         Token t = new Token(lexema, Type.numero, "Numero", i, j);
+                         LTokens.add(t);
+                         lexema = "";
+                         estado = 0;
+                         j = j - 1;
+                       }
+                    break;
+                    
+                    //Asignacion ->
+                    case 3:
+                      if(caracter == 62){ // Simbolo >
+                        Token s = new Token(lexema, Type.flecha, "Asignacion", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
+                      }else{
+                        
+                      }
                     break;
                 }
             }

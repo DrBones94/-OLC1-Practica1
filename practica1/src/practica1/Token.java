@@ -26,6 +26,9 @@ public class Token {
       separador, // Separador ~
       coma, //Coma ,
       cadena , // Cadena entre comillas dobles
+      prConj, // Palabra reservada CONJ
+      caracter, // Caracter
+      numero, // Numero
     }
   
   
