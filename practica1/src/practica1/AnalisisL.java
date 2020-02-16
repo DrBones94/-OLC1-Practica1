@@ -125,11 +125,8 @@ public class AnalisisL {
                             estado = 0;
                             lexema = "";
                         }else if(caracter == 37){ //Porcentaje %
-                            lexema += car;
-                            Token s = new Token(lexema, Type.porcentaje, "Porcentaje", i, j);
-                            LTokens.add(s);
-                            estado = 0;
-                            lexema = "";
+                          estado = 4;  
+                          lexema += car;
                         }else if(caracter > 32 || caracter <= 125){
                           lexema += car;
                           Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
@@ -207,7 +204,21 @@ public class AnalisisL {
                         lexema = "";
                         estado = 0;
                       }else{
-                        
+                        Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
+                        j = j - 1;
+                      }
+                    break;
+                    
+                    //Separador %%
+                    case 4:
+                      if(caracter == 37){ // Simbolo %
+                        Token s = new Token(lexema, Type.separador, "Separador", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
                       }
                     break;
                 }
