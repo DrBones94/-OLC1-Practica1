@@ -29,6 +29,7 @@ public class Token {
       prConj, // Palabra reservada CONJ
       caracter, // Caracter
       numero, // Numero
+      comentario //Comentario
     }
   
   

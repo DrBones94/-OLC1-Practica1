@@ -127,6 +127,9 @@ public class AnalisisL {
                         }else if(caracter == 37){ //Porcentaje %
                           estado = 4;  
                           lexema += car;
+                        }else if(caracter == 47){ //Simbolo /
+                          estado = 5;
+                          lexema += car;
                         }else if(caracter > 32 || caracter <= 125){
                           lexema += car;
                           Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
@@ -199,6 +202,7 @@ public class AnalisisL {
                     //Asignacion ->
                     case 3:
                       if(caracter == 62){ // Simbolo >
+                        lexema += car;
                         Token s = new Token(lexema, Type.flecha, "Asignacion", i, j);
                         LTokens.add(s);
                         lexema = "";
@@ -215,10 +219,78 @@ public class AnalisisL {
                     //Separador %%
                     case 4:
                       if(caracter == 37){ // Simbolo %
+                        lexema += car;
                         Token s = new Token(lexema, Type.separador, "Separador", i, j);
                         LTokens.add(s);
                         lexema = "";
                         estado = 0;
+                      }else{
+                        Token s =  new Token(lexema, Type.caracter, "Caracter", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
+                        j = j - 1;
+                      }
+                    break;
+                    
+                    // Inicio de comentarios
+                    case 5:
+                      switch (caracter) {
+                        case 47:
+                          //Simbolo /
+                          //Comentario de una linea
+                          estado = 6;
+                          lexema += car;
+                          break;
+                        case 42:
+                          // Simbolo *
+                          //Comentario Multilinea
+                          estado = 7;
+                          lexema += car;
+                          break;
+                        default:
+                          Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
+                          LTokens.add(s);
+                          lexema = "";
+                          estado = 0;
+                          j = j - 1;
+                          break;
+                      }
+                    break;
+                    
+                    //Comentario de una linea
+                    case 6:
+                      if(caracter == 10){ //Salto de Linea
+                        Token c = new Token(lexema, Type.comentario, "Comentario L", i, j);
+                        lexema = "";
+                        estado = 0;
+                        j = j - 1;
+                      }else{
+                        estado = 6;
+                        lexema += car;
+                      }
+                    break;
+                    
+                    //Comentario Multilinea
+                    case 7:
+                      if(caracter == 42){ //Simbolo *
+                        estado = 8;
+                        lexema += car;
+                      }else{
+                        estado = 7;
+                        lexema += car;
+                      }
+                    break;
+                    
+                    case 8:
+                      if(caracter == 47){ //Simbolo /
+                        Token c = new Token(lexema, Type.comentario, "Comentario Multilinea", i, j);
+                        lexema = "";
+                        estado = 0;
+                        j = j - 1;
+                      }else{
+                        estado = 7;
+                        lexema += car;
                       }
                     break;
                 }
