@@ -18,7 +18,6 @@ public class Practica1 {
     // TODO code application logic here
       Interfaz interfaz = new Interfaz();
       interfaz.setVisible(true);
-      System.out.print("Hola Mundo");
   }
   
 }

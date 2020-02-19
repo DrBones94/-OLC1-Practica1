@@ -10,7 +10,7 @@ import practica1.Token.Type;
 
 /**
  *
- * @author danpu
+ * @author drbones
  * 
  * Clase dedicada a ser el analizador lexico de nuestro lenguaje
  * Analizador Lexico hecho a patita.
@@ -20,7 +20,7 @@ public class AnalisisL {
     static ArrayList<ErrorA> LErrores = new ArrayList<ErrorA>(); //Lista de errores lexicos encontrados
     
     static int posicion;
-    static int preanalisis;
+    static Type preanalisis;
     
     /*Analizador Lexico*/
     public void A_Lexico (String entrada){
@@ -221,11 +221,11 @@ public class AnalisisL {
                       }
                     break;
                     
-                    //Separador %%
+                    //Divisor %%
                     case 4:
                       if(caracter == 37){ // Simbolo %
                         lexema += car;
-                        Token s = new Token(lexema, Type.separador, "Separador", i, j);
+                        Token s = new Token(lexema, Type.div, "Divisor", i, j);
                         LTokens.add(s);
                         lexema = "";
                         estado = 0;
@@ -309,5 +309,11 @@ public class AnalisisL {
                 }
             }
         }
+    }
+    
+    public void A_Sintactico(){
+      posicion = 0;
+      preanalisis = LTokens.get(posicion).getId();
+      
     }
 }
