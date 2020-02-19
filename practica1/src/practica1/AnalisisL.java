@@ -25,15 +25,17 @@ public class AnalisisL {
     /*Analizador Lexico*/
     public void A_Lexico (String entrada){
         String entradaA[] = entrada.split("\n");
-        String linea = new String();
         int caracter = 0; //ASCII del caracter.
         int estado = 0;
         boolean isChar = true; //Para saber si es caracter
         char car;
         String lexema= "";
         
+        
+        System.out.println("EntradaA " + entradaA.length);
         for(int i = 0; i <= entradaA.length - 1; i++){
-            linea = entradaA[i] + " ";
+            String linea = entradaA[i] + " ";
+            System.out.println("Linea: " + linea.length());
             
             for(int j = 0; j <= linea.length() -1; j++){
                 caracter = linea.codePointAt(j);
@@ -41,7 +43,7 @@ public class AnalisisL {
                 
                 switch(estado){
                     case 0:
-                        if(caracter == 32 || caracter == 9 || caracter == 10){ //Espacio en blanco
+                        if(caracter == 32 || caracter == 9 || caracter == 10 || caracter == 13){ //Espacio en blanco
                             estado = 0;
                         }else if(caracter == 209 || caracter == 241){ //Letra ñ y Ñ
                             estado = 1;
@@ -260,7 +262,9 @@ public class AnalisisL {
                     
                     //Comentario de una linea
                     case 6:
-                      if(caracter == 10){ //Salto de Linea
+                      if(caracter == 10 || caracter == 13){ //Salto de Linea
+                        System  
+                        
                         Token c = new Token(lexema, Type.comentario, "Comentario L", i, j);
                         lexema = "";
                         estado = 0;

@@ -10,6 +10,7 @@ import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -43,115 +44,115 @@ public class Interfaz extends javax.swing.JFrame {
    */
   
   @SuppressWarnings("unchecked")
-  // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-  private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-    jMenuItem5 = new javax.swing.JMenuItem();
-    jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
-    jLabel1 = new javax.swing.JLabel();
-    jMenuBar1 = new javax.swing.JMenuBar();
-    jMenu1 = new javax.swing.JMenu();
-    jMenuItem2 = new javax.swing.JMenuItem();
-    jMenuItem1 = new javax.swing.JMenuItem();
-    jMenuItem3 = new javax.swing.JMenuItem();
-    jMenu2 = new javax.swing.JMenu();
-    jMenuItem7 = new javax.swing.JMenuItem();
-    jMenu3 = new javax.swing.JMenu();
-    jMenuItem4 = new javax.swing.JMenuItem();
-    jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
 
-    jMenuItem5.setText("jMenuItem5");
+        jMenuItem5.setText("jMenuItem5");
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    setPreferredSize(new java.awt.Dimension(650, 500));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 500));
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
-    jLabel1.setText("Entrada:");
+        jLabel1.setText("Entrada:");
 
-    jMenu1.setText("Archivo");
+        jMenu1.setText("Archivo");
 
-    jMenuItem2.setText("Abrir");
-    jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem2ActionPerformed(evt);
-      }
-    });
-    jMenu1.add(jMenuItem2);
+        jMenuItem2.setText("Abrir");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
-    jMenuItem1.setText("Guardar");
-    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem1ActionPerformed(evt);
-      }
-    });
-    jMenu1.add(jMenuItem1);
+        jMenuItem1.setText("Guardar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
-    jMenuItem3.setText("Guardar Como");
-    jMenu1.add(jMenuItem3);
+        jMenuItem3.setText("Guardar Como");
+        jMenu1.add(jMenuItem3);
 
-    jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu1);
 
-    jMenu2.setText("Analizar");
+        jMenu2.setText("Analizar");
 
-    jMenuItem7.setText("Analizar");
-    jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem7ActionPerformed(evt);
-      }
-    });
-    jMenu2.add(jMenuItem7);
+        jMenuItem7.setText("Analizar");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
 
-    jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu2);
 
-    jMenu3.setText("Reportes");
+        jMenu3.setText("Reportes");
 
-    jMenuItem4.setText("Tokens");
-    jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem4ActionPerformed(evt);
-      }
-    });
-    jMenu3.add(jMenuItem4);
+        jMenuItem4.setText("Tokens");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem4);
 
-    jMenuItem6.setText("Errores");
-    jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jMenuItem6ActionPerformed(evt);
-      }
-    });
-    jMenu3.add(jMenuItem6);
+        jMenuItem6.setText("Errores");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem6);
 
-    jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenu3);
 
-    setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar1);
 
-    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-    getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(
-      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jLabel1)
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(283, Short.MAX_VALUE))
-    );
-    layout.setVerticalGroup(
-      layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-        .addContainerGap(21, Short.MAX_VALUE)
-        .addComponent(jLabel1)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(21, 21, 21))
-    );
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
 
-    pack();
-  }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
   public String getArchivo(String ruta){
     FileReader fr = null;
@@ -184,9 +185,13 @@ public class Interfaz extends javax.swing.JFrame {
     // REPORTE TOKENS
     
     try {
-            String rutaC = System.getProperty("user.home") + "/Desktop/graph";
-            File file_T = new File(rutaC , "REPORTE_TOKENS"+ ".html");
-            java.io.FileOutputStream archivo = new java.io.FileOutputStream(file_T); //permite abrir el archivo que se le indica
+            String rutaC = System.getProperty("user.home") + "/Desktop/Graph/";
+            System.out.println(rutaC);
+            File file_T = new File(rutaC  + "REPORTE_TOKENS.html");
+            
+            
+            
+            FileOutputStream archivo = new FileOutputStream(file_T); //permite abrir el archivo que se le indica
             archivo.write("<html> \n".getBytes());
             archivo.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>".getBytes());
             archivo.write("<head>\n".getBytes());
@@ -200,19 +205,14 @@ public class Interfaz extends javax.swing.JFrame {
                  
             archivo.write("<table border=\"collapse\" align = center>".getBytes());
             archivo.write("<tr><td>No.</td><td>TOKEN</td><td>LEXEMA</td><td>ID</td><td>FILA</td><td>COLUMNA</td></tr>".getBytes());
-            if(analisis.LTokens.size() > 1){
+            System.out.println(analisis.LTokens.size());
+            if(analisis.LTokens.size() > 0){
                 for (int i = 0; i < analisis.LTokens.size(); i++) {
                     //TOKENS
                     int w = i+1;
                     archivo.write(("<tr><td>"+w+"</td><td>"+analisis.LTokens.get(i).getToken()+"</td><td>"+analisis.LTokens.get(i).getLexema()+"</td><td>"+analisis.LTokens.get(i).getId()+"</td><td>"+analisis.LTokens.get(i).getFila()+"</td><td>"+analisis.LTokens.get(i).getColumna()+"</td></tr>").getBytes());
                 }
-//                for (int j = 0; j < analisis.LComentarios.size(); j++){
-//                    //COMENTARIOS
-//                    int w = j+1;
-//                    archivo.write(("<tr><td>"+w+"</td><td>"+analisis.LComentarios.get(j).getToken()+"</td><td>"+analisis.LComentarios.get(j).getLexema()+"</td><td>"+analisis.LComentarios.get(j).getId()+"</td><td>"+analisis.LComentarios.get(j).getFila()+"</td><td>"+analisis.LComentarios.get(j).getColumna()+"</td></tr>").getBytes());
-//                }
-            }
-            else{
+            }else{
                 JOptionPane.showMessageDialog(null, "No hay Tokens que mostrar!", "Sin TOKENS", JOptionPane.INFORMATION_MESSAGE);
             }
             archivo.write("</table>".getBytes());
@@ -227,7 +227,7 @@ public class Interfaz extends javax.swing.JFrame {
           
             Desktop.getDesktop().open(file_T.getAbsoluteFile());
         } catch (java.io.IOException e) {
-            System.out.println(e);
+            System.out.println("Reporte Tokens " + e);
         }
   }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -257,9 +257,11 @@ public class Interfaz extends javax.swing.JFrame {
   private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
     //ANALIZAR
     analisis.LTokens.clear();
-    analisis.LErrores.clear();;
+    analisis.LErrores.clear();
     
     analisis.A_Lexico(jTextArea1.getText());
+    
+    System.out.println(jTextArea1.getText());
     
     File folder = new File(System.getProperty("user.home") + "/Desktop/Graph");
     folder.mkdir();
@@ -346,20 +348,20 @@ public class Interfaz extends javax.swing.JFrame {
     });
   }
 
-  // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JMenu jMenu1;
-  private javax.swing.JMenu jMenu2;
-  private javax.swing.JMenu jMenu3;
-  private javax.swing.JMenuBar jMenuBar1;
-  private javax.swing.JMenuItem jMenuItem1;
-  private javax.swing.JMenuItem jMenuItem2;
-  private javax.swing.JMenuItem jMenuItem3;
-  private javax.swing.JMenuItem jMenuItem4;
-  private javax.swing.JMenuItem jMenuItem5;
-  private javax.swing.JMenuItem jMenuItem6;
-  private javax.swing.JMenuItem jMenuItem7;
-  private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextArea jTextArea1;
-  // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    // End of variables declaration//GEN-END:variables
 }
