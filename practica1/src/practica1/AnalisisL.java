@@ -34,7 +34,7 @@ public class AnalisisL {
         
         System.out.println("EntradaA " + entradaA.length);
         for(int i = 0; i <= entradaA.length - 1; i++){
-            String linea = entradaA[i] + " ";
+            String linea = entradaA[i] + " \n";
             System.out.println("Linea: " + linea.length());
             
             for(int j = 0; j <= linea.length() -1; j++){
@@ -131,6 +131,9 @@ public class AnalisisL {
                           lexema += car;
                         }else if(caracter == 47){ //Simbolo /
                           estado = 5;
+                          lexema += car;
+                        }else if(caracter == 60){//Simbolo <
+                          estado = 7;
                           lexema += car;
                         }else if(caracter > 32 || caracter <= 125){
                           lexema += car;
@@ -244,12 +247,6 @@ public class AnalisisL {
                           estado = 6;
                           lexema += car;
                           break;
-                        case 42:
-                          // Simbolo *
-                          //Comentario Multilinea
-                          estado = 7;
-                          lexema += car;
-                          break;
                         default:
                           Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
                           LTokens.add(s);
@@ -263,13 +260,12 @@ public class AnalisisL {
                     //Comentario de una linea
                     case 6:
                       if(caracter == 10 || caracter == 13){ //Salto de Linea
-                        System  
-                        
                         Token c = new Token(lexema, Type.comentario, "Comentario L", i, j);
                         lexema = "";
                         estado = 0;
                         j = j - 1;
                       }else{
+                        System.out.println("Caracter: " + caracter);
                         estado = 6;
                         lexema += car;
                       }
@@ -277,23 +273,36 @@ public class AnalisisL {
                     
                     //Comentario Multilinea
                     case 7:
-                      if(caracter == 42){ //Simbolo *
+                      if(caracter == 33){ //Simbolo !
                         estado = 8;
                         lexema += car;
                       }else{
-                        estado = 7;
-                        lexema += car;
+                        Token s = new Token(lexema, Type.caracter, "Caracter", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
+                        j = j - 1;
                       }
                     break;
                     
                     case 8:
-                      if(caracter == 47){ //Simbolo /
-                        Token c = new Token(lexema, Type.comentario, "Comentario Multilinea", i, j);
+                      if(caracter == 33){ //Simbolo !
+                        estado = 9;
+                        lexema += car;
+                      }else{
+                        estado = 8;
+                        lexema += car;
+                      }
+                    break;
+                    
+                    case 9:
+                      if(caracter == 62){ //Simbolo >
+                        lexema += car;
+                        Token c = new Token(lexema, Type.comentario, "Comentario", i, j);
                         lexema = "";
                         estado = 0;
-                        j = j - 1;
                       }else{
-                        estado = 7;
+                        estado = 8;
                         lexema += car;
                       }
                     break;
