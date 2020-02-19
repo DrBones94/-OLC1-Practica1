@@ -9,6 +9,28 @@ import java.util.ArrayList;
 import practica1.Token.Type;
 
 /**
+ * 
+ *
+  S ::= corcheteA CONJUNTOS ERS div LEXEMAS corcheteC;
+
+  CONJUNTOS ::= CONJUNTOS conj dp id asignacion EXP pc
+      | conj dp id asignacion EXP pc;
+
+  EXP ::= CHARLIST
+      | CONJUNTO;
+
+  CHARLIST = CHARLIST coma NUMCHAR
+      | NUMCHAR;
+
+  NUMCHAR ::= caracter
+      | numero;
+
+  CONJUNTO ::= NUMCHAR separador NUMCHAR;
+
+  ERS ::= ERS id asignacion ER pc
+      | id asignacion ER pc;
+
+  ER ::= 
  *
  * @author drbones
  * 
