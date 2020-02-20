@@ -31,19 +31,16 @@ import practica1.Token.Type;
 
   CONJUNTO ::= NUMCHAR separador NUMCHAR;
 
-  ERS ::= ERS id asignacion ER pc
-      | id asignacion ER pc;
+  ERS ::= id asignacion ER pc ERS'
+  
+  ERS' ::= id asignacion ER pc ERS'
+      | epsilon
 
-  ER ::= ER punto EX
-      | ER pipe EX
-      | ER interrogacionC EX
-      | ER asterisco EX
-      | ER mas EX
-      | punto EX
+  ER ::= punto EX 
       | pipe EX
       | interrogacionC EX
       | asterisco EX
-      | mas EX 
+      | mas EX
        
   EX ::= 
       
