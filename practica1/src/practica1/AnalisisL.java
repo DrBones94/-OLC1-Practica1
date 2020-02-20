@@ -13,14 +13,18 @@ import practica1.Token.Type;
  *
   S ::= corcheteA CONJUNTOS ERS div LEXEMAS corcheteC;
 
-  CONJUNTOS ::= CONJUNTOS conj dp id asignacion EXP pc
-      | conj dp id asignacion EXP pc;
+  CONJUNTOS :: =conj dp id asignacion EXP pc CONJUNTOS'
+   
+  CONJUNTOS' ::= conj dp id asignacion EXP pc CONJUNTOS'
+      | epsilon
 
   EXP ::= CHARLIST
       | CONJUNTO;
 
-  CHARLIST = CHARLIST coma NUMCHAR
-      | NUMCHAR;
+  CHARLIST = NUMCHAR CHARLIST'
+  
+  CHARLIST' ::= coma NUMCHAR CHARLIST'
+      | epsilon
 
   NUMCHAR ::= caracter
       | numero;
@@ -30,7 +34,19 @@ import practica1.Token.Type;
   ERS ::= ERS id asignacion ER pc
       | id asignacion ER pc;
 
-  ER ::= 
+  ER ::= ER punto EX
+      | ER pipe EX
+      | ER interrogacionC EX
+      | ER asterisco EX
+      | ER mas EX
+      | punto EX
+      | pipe EX
+      | interrogacionC EX
+      | asterisco EX
+      | mas EX 
+       
+  EX ::= 
+      
  *
  * @author drbones
  * 
@@ -156,6 +172,9 @@ public class AnalisisL {
                           lexema += car;
                         }else if(caracter == 60){//Simbolo <
                           estado = 7;
+                          lexema += car;
+                        }else if(caracter == 34){//Simbolo "
+                          estado = 10;
                           lexema += car;
                         }else if(caracter > 32 || caracter <= 125){
                           lexema += car;
@@ -326,6 +345,19 @@ public class AnalisisL {
                       }else{
                         estado = 8;
                         lexema += car;
+                      }
+                    break;
+                    
+                    case 10:
+                      if(caracter == 34){
+                        lexema += car;
+                        Token s = new Token(lexema, Type.cadena, "Cadena", i, j);
+                        LTokens.add(s);
+                        lexema = "";
+                        estado = 0;
+                      }else{
+                        lexema += car;
+                        estado = 10;
                       }
                     break;
                 }
